@@ -21,16 +21,25 @@ export default class Criar_pessoa extends Component {
 
 }
 
- handleSubmit(event) {
+  handleSubmit(event) {
   const nome=event.target.nome.value
   const rg=event.target.rg.value
   const  cpf=event.target.cpf.value
   const  data_nascimento=event.target.data_nascimento.value
   const  data_admissao=event.target.data_admissao.value
-  const response = axios.post("/api/pessoas?nome="+nome+"&rg="+rg+"&cpf="+cpf+"&data_nascimento="+data_nascimento+"&data_admissao="+data_admissao)
+  const response = axios.post("https://visie-pratico-teste.herokuapp.com/pessoas?nome="+nome+"&rg="+rg+"&cpf="+cpf+"&data_nascimento="+data_nascimento+"&data_admissao="+data_admissao).catch(function (error) {
+    if (error.response) {
+
+      alert('Falha no cadastro, por favor reveja a data!!');
+      document.location.href="/";
+    }  else {
+      console.log('Error', error.message);
+      
+    }
+    console.log(error.config);
+  });
   
   console.log(console.log(response))
-  alert('Pessoa cadastrada com sucesso !!');
   document.location.href="/";
   
    event.preventDefault();
@@ -83,10 +92,10 @@ cancelar(){
                         <input name="cpf" className="app-form-control" placeholder="CPF" required/>
                       </div>
                       <div className="app-form-group">
-                        <input name="data_nascimento" className="app-form-control" placeholder="DATA DE NASCIMENTO" required/>
+                        <input name="data_nascimento" className="app-form-control" placeholder="DATA DE NASCIMENTO (yyyy-mm-dd)" required/>
                       </div>
                       <div className="app-form-group">
-                        <input name="data_admissao" className="app-form-control" placeholder="DATA DE ADMISSAO" required/>
+                        <input name="data_admissao" className="app-form-control" placeholder="DATA DE ADMISSAO (yyyy-mm-dd)" required/>
                       </div>
                       <div className="app-form-group">
                         <input name="funcao" className="app-form-control" placeholder="FUNÇÃO" required/>
@@ -95,7 +104,7 @@ cancelar(){
                       <div className="app-form-group buttons">
                         
                         <input className="app-form-button" name="submit" type="submit" value="SUBMIT"></input>
-                        <a className="app-form-button" name = "cancel" onClick={() =>this.cancelar()}>CANCEL</a>
+                        <a className="app-form-button-a" name = "cancel" onClick={() =>this.cancelar()}>CANCEL</a>
                       </div>
                     </div>
                     </form>

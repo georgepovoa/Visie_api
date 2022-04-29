@@ -233,4 +233,17 @@
     outline: none;
     transition: border-color .2s;
   }
+
+  .app-form-button-a {
+    background: none;
+    border: none;
+    color: #ec2675;
+    font-size: 12px;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .app-form-button-a:hover {
+    color: #b9134f;
+  }
   

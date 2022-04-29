@@ -20,7 +20,7 @@ export default class Main_tela extends Component {
     }
 
     async componentDidMount(){
-        const response_api = await axios.get("/api/pessoas")
+        const response_api = await axios.get("https://visie-pratico-teste.herokuapp.com/pessoas")
         this.setState({
             tabela:response_api.data
         })

@@ -27,7 +27,7 @@ export default class Row_table extends Component {
     }
 
     async remover(id) {
-        const response = await axios.delete("/api/pessoas?id_api=" + id)
+        const response = await axios.delete("https://visie-pratico-teste.herokuapp.com/pessoas?id_api=" + id)
         console.log(response.data)
         window.location.reload(false);
     }
@@ -36,7 +36,7 @@ export default class Row_table extends Component {
     async alterar(id) {
         console.log("alterar id : ")
         console.log(id)
-        const response = await axios.get("/api/pessoas/" + id)
+        const response = await axios.get("https://visie-pratico-teste.herokuapp.com/pessoas/" + id)
         const dados = response.data[0]
 
 
@@ -95,7 +95,7 @@ export default class Row_table extends Component {
     async alterar_dados() {
         
         console.log(this.state.nome)
-        const res = await axios.put('/api/pessoas?id_pessoa=' +this.props.id + '&nome=' + this.state.nome+'&rg='+this.state.rg+"&cpf="+this.state.cpf+'&data_nascimento='+this.state.data_nascimento+"&data_admissao="+this.state.data_admissao+"&funcao="+this.state.funcao)
+        const res = await axios.put('https://visie-pratico-teste.herokuapp.com/pessoas?id_pessoa=' +this.props.id + '&nome=' + this.state.nome+'&rg='+this.state.rg+"&cpf="+this.state.cpf+'&data_nascimento='+this.state.data_nascimento+"&data_admissao="+this.state.data_admissao+"&funcao="+this.state.funcao)
         window.location.reload(false);
     }
 
@@ -145,10 +145,10 @@ export default class Row_table extends Component {
                                 <input name="cpf" className="app-form-control-editar" placeholder="CPF" value={this.state.cpf} onChange={e => this.oncpfChange(e.target.value)} />
                             </div>
                             <div className="app-form-group">
-                                <input name="data_nascimento" className="app-form-control-editar" placeholder="DATA DE NASCIMENTO" value={this.state.data_nascimento} onChange={e => this.ondata_nascimentoChange(e.target.value)} />
+                                <input name="data_nascimento" className="app-form-control-editar" placeholder="DATA DE NASCIMENTO (yyyy-mm-dd)" value={this.state.data_nascimento} onChange={e => this.ondata_nascimentoChange(e.target.value)} />
                             </div>
                             <div className="app-form-group">
-                                <input name="data_admissao" className="app-form-control-editar" placeholder="DATA DE ADMISSAO" value={this.state.data_admissao} onChange={e => this.ondata_admissaoChange(e.target.value)} />
+                                <input name="data_admissao" className="app-form-control-editar" placeholder="DATA DE ADMISSAO (yyyy-mm-dd)" value={this.state.data_admissao} onChange={e => this.ondata_admissaoChange(e.target.value)} />
                             </div>
                             <div className="app-form-group">
                                 <input name="funcao" className="app-form-control-editar" placeholder="FUNÇÃO" value={this.state.funcao} onChange={e => this.onfuncaoChange(e.target.value)} />
